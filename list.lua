@@ -113,10 +113,16 @@ Citizen.CreateThread(function()
      -- load Type id and color for list
      local Type = BlipListType[ListPostion[i].type]
 
+     local Description = ListPostion[i].description
+
      SetBlipSprite(Blip, Type.id)
      SetBlipColour(Blip, Type.color)
-     SetBlipAsShortRange(Blip, true)
+     
+     BeginTextCommandSetBlipName("STRING")
+		 AddTextComponentString(Description)
+		 EndTextCommandSetBlipName(Blip)
 
+     SetBlipAsShortRange(Blip, true)
   end
 
   Citizen.Trace("Blip list ok ! \n")
